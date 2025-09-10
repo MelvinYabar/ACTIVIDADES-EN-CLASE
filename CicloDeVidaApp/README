@@ -1,0 +1,26 @@
+# CicloDeVidaApp
+
+App sencilla en **Kotlin** que muestra un **contador** y sirve para **entender el ciclo de vida** de una Activity en Android.  
+Tiene logs y toasts en `onCreate`, `onStart`, `onResume`, `onPause`, `onStop`, `onDestroy`, y guarda el contador con `onSaveInstanceState`.
+
+---
+
+## Respuestas 
+
+### 1) ¿Qué pasa si NO usamos `onSaveInstanceState`? ¿Por qué se pierde el contador?
+Cuando giras la pantalla o Android “mata” la Activity para recuperar memoria, **la Activity se crea de nuevo**.  
+Si no guardas el valor del contador en el **Bundle** (`onSaveInstanceState`), al recrearse **todo arranca en 0**.  
+O sea, el dato vivía solo en RAM y se fue con la Activity anterior.
+
+### 2) ¿Por qué Android destruye y vuelve a crear la Activity al rotar?
+Porque cambiar la orientación es un **cambio de configuración** (tamaño, recursos, layout).  
+Android prefiere **recrear** la Activity para cargar el layout correcto y que todo se vea/funcione bien en la nueva posición.
+
+### 3) ¿Cuándo usarías `onPause` y `onStop` en una app real?
+- **onPause**: la app **sigue visible un poquito** o está por irse al fondo.  
+  Cosas rápidas: **pausar animaciones**, **pausar audio/video**, **dejar de leer sensores** por un momento, **guardar un borrador**.
+- **onStop**: la app ya **no está visible**.  
+  Cosas más “pesadas”: **cerrar cámara/GPS**, **parar servicios**, **cerrar sockets**, **guardar en disco** algo importante.
+
+---
+![Mi captura](docs/Captura%20de%20pantalla%202025-09-10%20142635.png)
