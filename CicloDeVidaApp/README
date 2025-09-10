@@ -23,4 +23,5 @@ Android prefiere **recrear** la Activity para cargar el layout correcto y que to
   Cosas más “pesadas”: **cerrar cámara/GPS**, **parar servicios**, **cerrar sockets**, **guardar en disco** algo importante.
 
 ---
-![Mi captura](docs/Captura%20de%20pantalla%202025-09-10%20142635.png)
+![Mi captura](docs/ui_inicio.png)
+
